@@ -1,0 +1,3 @@
+[mcp_servers.lx_artifacts]
+command = "python3"
+args = ["mcp/artifacts_server.py", "--root", "."]

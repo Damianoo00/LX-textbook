@@ -1,0 +1,17 @@
+{
+  "coordinator": {
+    "description": "Koordynuje cały workflow LX i przekazania między rolami."
+  },
+  "researcher": {
+    "description": "Weryfikuje twierdzenia, źródła i mapę pojęć."
+  },
+  "designer": {
+    "description": "Projektuje ścieżkę i storyboard interaktywnego podręcznika."
+  },
+  "implementer": {
+    "description": "Realizuje zatwierdzony plan i testuje interakcje."
+  },
+  "reviewer": {
+    "description": "Recenzuje bramki pedagogiczne, modele i działającą aplikację."
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "LX Textbook"
+  short_description: "Tekst ciągły z eksperymentami i oceną zrozumienia"
+  default_prompt: "Użyj $lx-textbook, aby zbudować interaktywny podręcznik na podstawie briefu projektu."

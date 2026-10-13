@@ -1,0 +1,16 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "lx-coordinator",
+  "mcp": {
+    "lx_artifacts": {
+      "type": "local",
+      "command": [
+        "python3",
+        "mcp/artifacts_server.py",
+        "--root",
+        "."
+      ],
+      "enabled": true
+    }
+  }
+}
