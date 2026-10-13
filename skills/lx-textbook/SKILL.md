@@ -1,6 +1,6 @@
 ---
 name: lx-textbook
-description: Build or revise an interactive textbook with continuous explanatory prose, concept prerequisites, meaningful experiments, prediction before reveal, and transfer assessment. Use for browser-based learning modules and reusable learning-experience workflows, rather than ordinary websites or slide decks.
+description: Interview the user, configure a new project automatically, and build or revise a browser-based interactive textbook with continuous prose, experiments, prediction and transfer. Use for learning modules, including requests without a brief or project configuration.
 ---
 
 # LX Textbook
@@ -9,9 +9,23 @@ Create a coherent explanation that the learner can read from beginning to end. P
 
 ## Establish scope
 
-Read the project's brief and applicable AGENTS.md. Preserve the requested topic, audience, language, format and authorization. Ask only blocking questions. For an existing module, keep working interactions and update only the necessary artifacts. An instruction to finish or build authorizes implementation after the planning gates pass; do not introduce a new approval checkpoint. If the user requests planning only, stop after the plan.
+Read applicable AGENTS.md and the project brief if one exists. If no brief exists, use the guided start below. Preserve the requested topic, audience, language, format and authorization. Ask only blocking questions. For an existing module, keep working interactions and update only the necessary artifacts. An instruction to finish or build authorizes implementation after the planning gates pass; do not introduce a new approval checkpoint. If the user requests planning only, stop after the plan.
 
-For a new project, optionally run `scripts/new_module.py DESTINATION --topic TOPIC`. It creates a brief, project instructions, a ready-to-paste start prompt and this portable skill. Use `--help` for audience, language, time and planning-only options. It refuses a nonempty destination. It does not generate domain claims, publish anything or install global skills.
+## Guided start — no manual configuration
+
+When the user requests a new textbook, gather missing information through conversation and configure the project yourself. Read prior messages first; do not ask again for supplied details. Respond in the user's language.
+
+1. Ask one short batch about missing topic, audience/prior knowledge and the desired outcome. Example: “Jaki temat, dla kogo i co czytelnik ma umieć po lekturze?” If these are known, proceed.
+2. Resolve only material scope ambiguity. Offer a concrete proposed scope and continuous example. Default to the user's language, approximately 20 minutes and build mode unless the user requests planning only. Ask about sources only when the user refers to specific materials or verification otherwise cannot proceed. Do not require a technical questionnaire, model choice, adapter selection or manual brief.
+3. Infer a writable destination from the workspace and topic, e.g. a new sibling project folder `textbook-<topic>`. State the chosen path. If the destination is ambiguous and changes where work belongs, ask once. Do not initialize inside this skill or overwrite an existing project.
+4. Write a temporary UTF-8 JSON intake file yourself with `topic`, `audience`, `goal`, `scope`. Optional fields: `language`, `minutes` (positive integer), `example`, `mode` (`build`/`plan`), `sources`, `exclusions`. Run `python3 <absolute-skill-path>/scripts/bootstrap.py <destination> --intake <json-path>` with proper tool arguments/quoting. The script creates the brief, shared workflow, roles, all three native adapters, a local read-only MCP server and discoverable copies of this skill. Everything needed is bundled in this skill; no repository-root installer is required.
+5. Read the generated brief and `core/workflow.md`, set tool working directory to the new project and continue directly with the design gates below, then implementation if authorized. A build request authorizes setup and building; do not insert another approval checkpoint. If the user only asks to prepare the project, stop after setup.
+
+New configuration may require a fresh client session before native agents/MCP become available. Do not claim hot activation. Use current session tools and sequential roles to continue now; do not send the user back to manual installation. No CLI installation, credentials or global configuration is performed. If a required capability is missing, record the blocked check and continue independent work.
+
+For an existing textbook, preserve its configuration and working interactions. Read and update the brief from the conversation, then follow the same planning/build gates; do not run bootstrap on a nonempty folder. If scaffolding must be added, merge only missing files and preserve existing client settings.
+
+Use `scripts/bootstrap.py` for project initialization. The project templates in `assets/project/` are configuration resources, not domain claims; they never grant the scope of another module.
 
 ## Design before rendering
 

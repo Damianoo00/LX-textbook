@@ -1,3 +1,5 @@
-# LX Harness
+# LX Textbook — utrzymanie pakietu
 
-Pakiet służy do budowy interaktywnych podręczników. Przy pracy nad samym pakietem nie uruchamiaj budowy lekcji. Przy budowie lekcji przeczytaj core/workflow.md, skills/lx-textbook/SKILL.md oraz docs/brief.md projektu. Używaj ról agents/; native subagents tylko gdy są dostępne i dozwolone, w przeciwnym razie wykonaj role kolejno. Zmiany pakietu sprawdzaj przez python3 -m unittest discover -s tests -v. Nie przenoś zakresu ani autoryzacji z innego projektu.
+Źródłem workflow jest skills/lx-textbook/SKILL.md. Wszystkie zasoby generowanego projektu znajdują się w skills/lx-textbook/assets/project/, a pedagogika w references/pedagogy.md tego skilla. Nie odtwarzaj kopii agentów, adapterów ani serwera MCP w katalogu głównym repozytorium.
+
+Przy zmianach pakietu zachowaj samodzielność skilla i ochronę istniejących projektów. Uruchom python3 -m unittest discover -s tests -v. Przy zmianach ról uaktualnij ich natywne odpowiedniki w assets/project/. Nie uruchamiaj generowania lekcji podczas samego utrzymywania pakietu. Zakres i autoryzacja lekcji pochodzą z bieżącej prośby i briefu projektu.
